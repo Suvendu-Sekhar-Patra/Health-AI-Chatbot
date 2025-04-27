@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Chatbot</title>
+    <style>
+        /* Add your CSS styles for the chat interface here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .chat-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .chat-log {
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .user-input {
+            display: flex;
+            justify-content: space-between;
+        }
+        input[type="text"] {
+            flex-grow: 2;
+            padding: 5px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-log" id="chat-log"></div>
+        <div class="user-input">
+            <input type="text" id="user-input" placeholder="Type your symptom...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatLog = document.getElementById("chat-log");
+        const userInput = document.getElementById("user-input");
+        const sendButton = document.getElementById("send-button");
+
+        // Initial greeting message
+        appendMessage("Medical Bot", "Hello! How can I assist you today?");
+
+        sendButton.addEventListener("click", function () {
+            const userSymptom = userInput.value.trim();
+            if (userSymptom !== "") {
+                appendMessage("You", userSymptom);
+                userInput.value = "";
+
+                // Simulate a response from the bot (replace with your logic)
+                setTimeout(function () {
+                    const botResponse = getBotResponse(userSymptom);
+                    appendMessage("Medical Bot", botResponse);
+                }, 1000);
+            }
+        });
+
+        function appendMessage(sender, message) {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message");
+            messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatLog.appendChild(messageDiv);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function getBotResponse(userSymptom) {
+            // Replace with your chatbot logic (add more symptoms and diseases)
+            if (userSymptom.toLowerCase().includes("fever")) {
+                return "Fever can be a symptom of various infections, including flu and COVID-19. Consult a doctor for a proper diagnosis.";
+            } else if (userSymptom.toLowerCase().includes("cough")) {
+                return "Coughs can result from respiratory infections, allergies, or lung conditions. Stay hydrated and consider cough syrup if needed.";
+            } else if (userSymptom.toLowerCase().includes("headache")) {
+                return "Headaches can be due to tension, migraines, or sinus problems. You can try pain relievers like ibuprofen.";
+            } else {
+                return "I'm just a simple chatbot. Please consult a medical professional for personalized advice.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "I cannot answer that question. I am a healthcare chatbot and my purpose is to provide medical information and guidance.  To get information about the Prime Minister of India, please use a search engine or another appropriate resource.  Is there anything else I can help you with regarding your health?\n"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "avgLogprobs": -0.1743444245437096
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 987,
+    "candidatesTokenCount": 58,
+    "totalTokenCount": 1045,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 987
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 58
+      }
+    ]
+  },
+  "modelVersion": "gemini-1.5-flash"
+}
